@@ -1,4 +1,10 @@
-# Heart Health Predictor 🩺❤️
+# Heart Disease Predictor 🩺❤️
+
+Predict heart disease risk using a trained KNN model.
+
+## Live Demo
+https://huggingface.co/spaces/GaneshNeeli/heart-predictor-api
+
 
 An AI-powered clinical assessment application designed to predict the risk of heart disease/stroke based on patient clinical parameters. The system is built with a decoupled architecture featuring a modern, high-performance React frontend and a FastAPI backend serving a K-Nearest Neighbors (KNN) classification model.
 
