@@ -40,7 +40,7 @@ export function PredictionForm() {
   const onSubmit = async (data: FormValues) => {
     setLoading(true); setError(null); setPrediction(null);
     try {
-      const res = await axios.post("http://localhost:8000/predict", {
+      const res = await axios.post("/predict", {
         ...data,
         Age: Number(data.Age),
         RestingBP: Number(data.RestingBP),

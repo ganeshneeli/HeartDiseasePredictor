@@ -2,6 +2,7 @@ import os
 import joblib
 import pandas as pd
 from fastapi import FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
@@ -48,14 +49,7 @@ class HeartPredictionInput(BaseModel):
     Oldpeak: float = Field(..., description="ST depression induced by exercise relative to rest")
     ST_Slope: str = Field(..., description="The slope of the peak exercise ST segment (Up/Flat/Down)")
 
-@app.get("/")
-def read_root():
-    return {
-        "status": "online",
-        "message": "Heart Health Predictor API is running. Send POST to /predict.",
-        "model_loaded": model is not None
-    }
-
+app.mount("/", StaticFiles(directory="static", html=True), name="static")
 @app.post("/predict")
 def predict(data: HeartPredictionInput):
     if model is None or scaler is None or expected_columns is None:
